@@ -1,8 +1,8 @@
 <?php
 
 // Inclure les fichiers nécessaires
-require_once '../App/controllers/HomeController.php'; // Assurez-vous que HomeController.php existe dans le dossier "controllers"
-require_once '../App/models/HomeModel.php'; // Assurez-vous que HomeModel.php existe dans le dossier "models"
+require_once './app/controllers/HomeController.php'; // Assurez-vous que HomeController.php existe dans le dossier "controllers"
+require_once './app/models/HomeModel.php'; // Assurez-vous que HomeModel.php existe dans le dossier "models"
 
 // Récupérer l'URL demandée
 
@@ -19,7 +19,7 @@ $controller = (isset($segments[0]) && !empty($segments[0])) ? ucfirst($segments[
 $action = (isset($segments[1]) && !empty($segments[1])) ? $segments[1] : 'index';
 
 // Vérifier si le fichier du contrôleur existe
-$controller_file = "../App/controllers/{$controller}.php";
+$controller_file = "./app/controllers/{$controller}.php";
 if (file_exists($controller_file)) {
     require_once $controller_file;
 
