@@ -1,0 +1,17 @@
+{
+    "name": "mxmchr/clipmaker",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Mxmchr\\Clipmaker\\": "App/"
+        }
+    },
+    "authors": [
+        {
+            "name": "mxmchr"
+        }
+    ],
+    "require-dev": {
+        "symfony/var-dumper": "*"
+    }
+}
