@@ -1,7 +1,3 @@
-<?php include './app/templates/header.php'; ?>
-
 <main>
-
+    <h1>Editeur Vidéo</h1>
 </main>
-</body>
-</html>

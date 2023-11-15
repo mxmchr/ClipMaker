@@ -1,8 +1,17 @@
 <?php
 
 // Inclure les fichiers nécessaires
-require_once './app/controllers/HomeController.php'; // Assurez-vous que HomeController.php existe dans le dossier "controllers"
-require_once './app/models/HomeModel.php'; // Assurez-vous que HomeModel.php existe dans le dossier "models"
+require_once './app/controllers/HomeController.php';
+require_once './app/models/HomeModel.php';
+
+require_once './app/controllers/ClipsController.php';
+require_once './app/models/ClipsModel.php';
+
+require_once './app/controllers/UploadController.php';
+require_once './app/models/UploadModel.php';
+
+require_once './app/controllers/VideoController.php';
+require_once './app/models/VideoModel.php';
 
 // Récupérer l'URL demandée
 

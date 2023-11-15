@@ -1,7 +1,4 @@
-<?php include './app/templates/header.php'; ?>
-
-<article>
-
+<main class="videoViews">
     <h1>Ma Video</h1>
 
     <video width="640" height="360" controls>
@@ -22,4 +19,4 @@
         </div>
     </form>
 
-</article>
+</main>
