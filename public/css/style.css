@@ -6,7 +6,6 @@ a {
     text-decoration: none;
 }
 
-/* Pour les navigateurs Webkit (Chrome, Safari) */
 body::-webkit-scrollbar {
     width: 12px;
 }
@@ -45,6 +44,7 @@ body::-ms-scrollbar-track {
     transform: translateY(50%);
     text-align: center;
     transition: color 0.3s ease-in-out;
+    text-transform: uppercase;
 }
 
 .title__home:hover {
@@ -116,12 +116,12 @@ body::-ms-scrollbar-track {
 }
 
 .title__date {
+    text-align: center;
     color: #e0c3ff;
     font-size: 15px;
-    margin-top: 7px;
 }
 
-.title__clipsView {
+.title__View {
     color: white;
     font-size: 28px;
     margin: 20px;
@@ -281,6 +281,28 @@ body::-ms-scrollbar-track {
 .video-container video {
     width: 100%;
     border-radius: 8px;
+}
+
+.list__footer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.download-button {
+    padding: 8px 13px;
+    font-size: 15px;
+    background-color: #3498db;
+    color: #fff;
+    border: 1px solid #826fd5;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.download-button:hover {
+    background-color: #2684c4;
 }
 
 

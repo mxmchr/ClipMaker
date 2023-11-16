@@ -6,6 +6,7 @@ class VideoController
     {
         $videoModel = new VideoModel();
         $videoPath = $videoModel->getVideoPathById($videoId);
+        $videoTitle = $videoModel->getVideoTitleById($videoId);
 
         require_once './app/views/VideoView.php';
     }

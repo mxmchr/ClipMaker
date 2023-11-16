@@ -16,5 +16,20 @@ class VideoModel
 
         return $result['file_path'];
     }
+
+    public function getVideoTitleById($videoId)
+    {
+        $db = new Database();
+        $conn = $db->connect();
+
+        $query = "SELECT Title FROM videos WHERE id = :videoId";
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(':videoId', $videoId, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $result['Title'];
+    }
 }
 

@@ -1,5 +1,5 @@
 <main class="videoViews">
-    <h1>Ma Video</h1>
+    <h1 class="title__View"><?php echo $videoTitle;?></h1>
     <article class="videoView__article">
         <video class="videoView__video" width="640" height="360" controls>
             <source src="<?php echo $videoPath; ?>" type="video/mp4">

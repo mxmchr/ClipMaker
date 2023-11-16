@@ -6,7 +6,7 @@ class ClipsView
     {
         echo "<article class='article__clipsViews'>";
 
-            echo "<h1 class='title__clipsView'>Liste des clips</h1>";
+            echo "<h1 class='title__View'>Liste des clips</h1>";
             echo "<div class='search-container'>
                     <input type='text' class='search-input' placeholder='Rechercher...'>
                     <button class='search-button'>Rechercher</button>
@@ -22,7 +22,13 @@ class ClipsView
                                 <video width="400" height="225" controls>
                                     <source src="' . $clip->file_path . '" type="video/mp4">
                                 </video>
-                                <h3 class="title__date">' . $formattedDate . '</h3>
+                                <div class="list__footer">
+                                    <h3 class="title__date">' . $formattedDate . '</h3>
+                                <form action="/clip/download" method="post">
+                                    <button class="download-button" type="submit" name="download">Télécharger</button>
+                                </form>
+                                </div>
+                                
                             </li>';
                 }
             echo "</ul>";

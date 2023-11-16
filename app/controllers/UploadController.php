@@ -25,7 +25,7 @@ class UploadController
                 if (move_uploaded_file($_FILES['video']['tmp_name'], $uploadFile)) {
                     $generatedName = $uploadModel->addVideoToDatabase($videoTitle, $uploadFile, $videoDescription);
 
-                    header("Location: /video/$generatedName");
+                    header("Location: /video/index/$generatedName");
                     exit;
                 } else {
                     echo 'Erreur lors de l\'upload du fichier.';
