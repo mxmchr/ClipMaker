@@ -7,11 +7,7 @@ a {
 }
 
 .container {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    background: linear-gradient(to top right, #7659a6, #b996e3) no-repeat;
-    background-size: 100% 100%;
+    background: linear-gradient(to top right, #7659a6, #b996e3);
 }
 
 .list {

@@ -2,9 +2,12 @@
 
 class VideoController
 {
-    public function index()
+    public function index($videoId)
     {
-        // Charger la vue HomeView
+        $videoModel = new VideoModel();
+        $videoPath = $videoModel->getVideoPathById($videoId);
+
         require_once './app/views/VideoView.php';
     }
 }
+
