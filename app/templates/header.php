@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap">
     <link href="https://fonts.cdnfonts.com/css/tt-norms-pro" rel="stylesheet">
 
-    <link rel="stylesheet" href="./public/css/reset.css">
-    <link rel="stylesheet" href='./public/css/style.css'>
+    <link rel="stylesheet" href="/public/css/reset.css">
+    <link rel="stylesheet" href='/public/css/style.css'>
 </head>
 
 <body class="container">

@@ -1,5 +1,10 @@
 <?php
+
 require './vendor/autoload.php';
+
+if (!defined('ABSPATH')) {
+    define('ABSPATH', __DIR__ . '/');
+}
 
 include './app/templates/header.php';
 
