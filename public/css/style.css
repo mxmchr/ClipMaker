@@ -6,8 +6,49 @@ a {
     text-decoration: none;
 }
 
+/* Pour les navigateurs Webkit (Chrome, Safari) */
+body::-webkit-scrollbar {
+    width: 12px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #8f77b2;
+    border-radius: 6px;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: #b996e3;
+}
+
+body::-ms-scrollbar {
+    width: 12px;
+}
+
+body::-ms-scrollbar-thumb {
+    background-color: #8f77b2;
+    border-radius: 6px;
+}
+
+body::-ms-scrollbar-track {
+    background-color: #b996e3;
+}
+
+
 .container {
     background: linear-gradient(to top right, #7659a6, #b996e3);
+}
+
+.title__home {
+    font-size: 10em;
+    font-weight: 600;
+    color: #b597d9;
+    transform: translateY(50%);
+    text-align: center;
+    transition: color 0.3s ease-in-out;
+}
+
+.title__home:hover {
+    color: #715ca2;
 }
 
 .list {
@@ -61,7 +102,8 @@ a {
     align-items: center;
     text-align: center;
     background-color: #8c66c2;
-    margin: 15px;
+    margin: 10px;
+    padding: 0 15px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -179,5 +221,67 @@ a {
 .search-button:hover {
     background-color: #2684c4;
 }
+
+.videoView__article {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+}
+
+.videoView__video {
+    margin: 20px;
+}
+
+.form__clip {
+    max-width: 300px;
+    padding: 20px;
+    background-color: #8b5fc5;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.form__clip label {
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.form__clip input[type="number"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #ecf0f1;
+}
+
+.form__clip input[type="submit"] {
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #3498db;
+    color: #fff;
+    cursor: pointer;
+}
+
+.form__clip input[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+.video-container {
+    width: 400px;
+    margin: 20px;
+}
+
+.video-container video {
+    width: 100%;
+    border-radius: 8px;
+}
+
 
 
