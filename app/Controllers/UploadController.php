@@ -2,8 +2,8 @@
 
 namespace Clipmaker\Controllers;
 use Clipmaker\Models\UploadModel;
-
-require_once './app/Models/UploadModel.php';
+use FFMpeg\FFMpeg;
+use FFMpeg\Format\Video\X264;
 
 class UploadController
 {
@@ -25,13 +25,31 @@ class UploadController
                 $uploadFile = $uploadDir . $uniqueName;
                 $uploadModel = new UploadModel();
 
-                if (move_uploaded_file($_FILES['video']['tmp_name'], $uploadFile)) {
-                    $generatedName = $uploadModel->addVideoToDatabase($videoTitle, $uploadFile, $videoDescription);
+                try {
+                    // Création de l'objet FFMpeg
+                    $ffmpeg = FFMpeg::create();
 
+                    // Chargement de la vidéo
+                    $video = $ffmpeg->open($_FILES['video']['tmp_name']);
+
+                    // Conversion de la vidéo en un format compatible (X264)
+                    $format = new X264();
+                    $format->setAudioCodec("aac");
+
+                    // Définition du chemin de la vidéo après conversion
+                    $convertedFile = $uploadDir . 'converted_' . $uniqueName;
+
+                    // Encodage et sauvegarde de la vidéo convertie
+                    $video->save($format, $convertedFile);
+
+                    // Ajout de la vidéo convertie à la base de données
+                    $generatedName = $uploadModel->addVideoToDatabase($videoTitle, $convertedFile, $videoDescription);
+
+                    // Redirection vers la page de la vidéo convertie
                     header("Location: /video/index/$generatedName");
                     exit;
-                } else {
-                    echo 'Erreur lors de l\'upload du fichier.';
+                } catch (\Exception $e) {
+                    echo 'Erreur lors du traitement de la vidéo : ' . $e->getMessage();
                 }
             } else {
                 echo 'Erreur : Veuillez sélectionner une vidéo.';

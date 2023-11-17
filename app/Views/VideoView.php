@@ -14,11 +14,11 @@
         <form action="/Video/clip" method="post" class="form__clip">
             <div class="">
                 <label class="label__clip" for="begin">Début du clip</label>
-                <input class="input__clip" name="clipStart" placeholder="00.0 s" type="number" min="0" max="<?php echo $duration?>" step="0.1"/>
+                <input class="input__clip" name="clipStart" placeholder="00.0 s" type="number" min="0" max="100" step="0.1"/>
             </div>
             <div class="">
                 <label for="end">Fin du clip</label>
-                <input class="input__clip" name="clipStop" placeholder="00.0 s" type="number" min="0" max="<?php echo $duration?>" step="0.1"/>
+                <input class="input__clip" name="clipStop" placeholder="00.0 s" type="number" min="0" max="100<?php /*echo $duration*/?>" step="0.1"/>
             </div>
             <div class="">
                 <label class="label__clip" for="screenshot">Capture</label>

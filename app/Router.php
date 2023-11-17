@@ -16,7 +16,6 @@ $param = (isset($segments[2]) && !empty($segments[2])) ? $segments[2] : null;
 // Vérifier si le fichier du contrôleur existe
 $controller_file = "./app/Controllers/{$controller}.php";
 if (file_exists($controller_file)) {
-    //require_once $controller_file;
 
     // Instancier le contrôleur
     $fqn=NAMESPACE_CONTROLLER . $controller;
@@ -28,11 +27,11 @@ if (file_exists($controller_file)) {
         $controller_instance->$action($param);
     } else {
         // Gérer l'action non trouvée (par exemple, afficher une erreur 404)
-        echo "Action non trouvée";
+        require_once './app/templates/404.php';
     }
 } else {
     // Gérer le contrôleur non trouvé (par exemple, afficher une erreur 404)
-    echo "Contrôleur non trouvé";
+    require_once './app/templates/404.php';
 }
 
 

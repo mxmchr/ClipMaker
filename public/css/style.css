@@ -1,3 +1,25 @@
+.p__codeErreur {
+    font-size: 5em;
+    font-weight: 600;
+    color: #b597d9;
+    text-align: center;
+    margin-top: 10%;
+    text-transform: uppercase;
+}
+
+.p__messageErreur {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 20px;
+    text-align: center;
+    color: #715ca2;
+}
+
+.span__urlErreur {
+    color: #c0a6e3;
+    font-weight: bold;
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
 }
@@ -64,7 +86,6 @@ body::-ms-scrollbar-track {
     line-height: 2em;
     text-align: center;
     color: #715ca2;
-
 }
 
 .p__home:hover {

@@ -1,13 +1,15 @@
 <?php
 
 namespace Clipmaker\Models;
+use Clipmaker\Config;
+use PDOException;
 class UploadModel
 {
     private $db;
 
     public function __construct()
     {
-        $this->db = (new Database())->connect();
+        $this->db = (new Config())->connect();
     }
 
     public function addVideoToDatabase($videoTitle, $videoFilePath, $videoDescription)
