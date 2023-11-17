@@ -37,6 +37,12 @@ body::-ms-scrollbar-track {
     background: linear-gradient(to top right, #7659a6, #b996e3);
 }
 
+.home__article {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
 .title__home {
     font-size: 10em;
     font-weight: 600;
@@ -49,6 +55,20 @@ body::-ms-scrollbar-track {
 
 .title__home:hover {
     color: #715ca2;
+}
+
+.p__home {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 10%;
+    line-height: 2em;
+    text-align: center;
+    color: #715ca2;
+
+}
+
+.p__home:hover {
+    color: #b597d9;
 }
 
 .list {
@@ -123,7 +143,7 @@ body::-ms-scrollbar-track {
 
 .title__View {
     color: white;
-    font-size: 28px;
+    font-size: 35px;
     margin: 20px;
     font-weight: 700;
 }
@@ -238,6 +258,7 @@ body::-ms-scrollbar-track {
 .form__clip {
     max-width: 300px;
     padding: 20px;
+    margin: 10px;
     background-color: #8b5fc5;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -303,6 +324,19 @@ body::-ms-scrollbar-track {
 
 .download-button:hover {
     background-color: #2684c4;
+}
+
+.video__description {
+    color: white;
+    font-weight: 600;
+    margin: 5px 10px 10px 10px;
+}
+
+.video__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 

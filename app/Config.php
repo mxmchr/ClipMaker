@@ -1,6 +1,8 @@
 <?php
+namespace Clipmaker;
 
-class Database {
+use PDO;
+class Config {
     private $host = "localhost";
     private $dbname = "Clipmaker";
     private $username = "root";

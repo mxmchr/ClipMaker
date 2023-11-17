@@ -1,12 +1,17 @@
 <?php
 
-require_once './app/config.php';
+namespace Clipmaker\Models;
+
+use Clipmaker\Config;
+use PDO;
+//require_once './app/Config.php';
+
 class ClipsModel {
     private $db;
 
     // Constructeur pour initialiser la connexion à la base de données
     public function __construct() {
-        $this->db = new Database();
+        $this->db = new Config();
     }
 
     // Méthode pour récupérer tous les clips

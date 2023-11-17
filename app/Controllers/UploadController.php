@@ -1,12 +1,15 @@
 <?php
 
-require_once './app/models/UploadModel.php';
+namespace Clipmaker\Controllers;
+use Clipmaker\Models\UploadModel;
+
+require_once './app/Models/UploadModel.php';
 
 class UploadController
 {
     public function index()
     {
-        include './app/views/UploadView.php';
+        include './app/Views/UploadView.php';
     }
 
     public function handleUpload()

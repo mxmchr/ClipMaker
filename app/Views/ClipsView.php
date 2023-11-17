@@ -1,4 +1,6 @@
 <?php
+
+namespace Clipmaker\Views;
 class ClipsView
 {
     // Méthode pour afficher tous les clips
@@ -24,7 +26,7 @@ class ClipsView
                                 </video>
                                 <div class="list__footer">
                                     <h3 class="title__date">' . $formattedDate . '</h3>
-                                <form action="/clip/download" method="post">
+                                <form action="/clips/download" method="post">
                                     <button class="download-button" type="submit" name="download">Télécharger</button>
                                 </form>
                                 </div>

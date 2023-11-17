@@ -1,6 +1,6 @@
 <?php
-// UploadModel.php
 
+namespace Clipmaker\Models;
 class UploadModel
 {
     private $db;
@@ -15,10 +15,10 @@ class UploadModel
         try {
             // Préparez la requête SQL
             $stmt = $this->db->prepare("INSERT INTO videos (title, file_path, description) VALUES (:title, :file_path, :description)");
-
+            $test = ltrim($videoFilePath,'.');
             // Liez les paramètres
             $stmt->bindParam(':title', $videoTitle);
-            $stmt->bindParam(':file_path', $videoFilePath);
+            $stmt->bindParam(':file_path', $test);
             $stmt->bindParam(':description', $videoDescription);
 
             // Exécutez la requête
