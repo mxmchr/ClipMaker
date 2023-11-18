@@ -5,7 +5,9 @@
     <title>Clip Maker</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap">
     <link href="https://fonts.cdnfonts.com/css/tt-norms-pro" rel="stylesheet">
-
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="/public/js/video.js"></script>
+    <link rel="icon" href="/public/img/favicon.ico">
     <link rel="stylesheet" href="/public/css/reset.css">
     <link rel="stylesheet" href='/public/css/style.css'>
 </head>

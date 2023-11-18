@@ -1,6 +1,8 @@
 <?php
 
 namespace Clipmaker\Views;
+
+use Clipmaker\Models\ClipsModel;
 class ClipsView
 {
     // Méthode pour afficher tous les clips
@@ -10,7 +12,7 @@ class ClipsView
 
             echo "<h1 class='title__View'>Liste des clips</h1>";
             echo "<div class='search-container'>
-                    <input type='text' class='search-input' placeholder='Rechercher...'>
+                    <input type='text' class='search-input' id='idbarrederecher' placeholder='Rechercher...'>
                     <button class='search-button'>Rechercher</button>
                 </div>";
 

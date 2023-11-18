@@ -277,7 +277,7 @@ body::-ms-scrollbar-track {
 }
 
 .form__clip {
-    max-width: 300px;
+    width: 30%;
     padding: 20px;
     margin: 10px;
     background-color: #8b5fc5;
@@ -293,14 +293,51 @@ body::-ms-scrollbar-track {
     color: #fff;
 }
 
+.form__divNumber {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+.form__divText {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.form__number {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: flex-start;
+}
+
+.form__text {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
 .form__clip input[type="number"] {
-    width: calc(100% - 20px);
+    width: 40%;
     padding: 10px;
     margin-bottom: 15px;
     border: none;
     border-radius: 4px;
     background-color: #ecf0f1;
 }
+
+.form__clip input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #ecf0f1;
+}
+
+
 
 .form__clip input[type="submit"] {
     padding: 12px;

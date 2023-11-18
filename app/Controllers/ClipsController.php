@@ -7,7 +7,8 @@ use Clipmaker\Views\ClipsView;
 
 class ClipsController {
     // Action pour afficher tous les clips
-    public function index() {
+    public function index(): void
+    {
         // Instanciez le modèle ClipsModel
         $clipsModel = new ClipsModel();
 
@@ -20,19 +21,29 @@ class ClipsController {
         $clipsView->showAllClips($clips);
     }
 
+    public function search() {
+        $val_search = $_GET['val'];
+
+    }
+
     public function download() {
-        /*// Envoi des en-têtes pour forcer le téléchargement
+        // Chemin du fichier sur le serveur
+        $chemin_fichier = ABSPATH . '/depot/clips/video.mp4';
+
+        // Nom du fichier à télécharger
+        $nom_fichier = 'clip.mp4';
+
+        // Définit les en-têtes HTTP
         header('Content-Description: File Transfer');
-        header('Content-Type: application/octet-stream');
-        header('Content-Disposition: attachment; filename="' . $downloadFileName . '"');
+        header('Content-Type: video/mp4');
+        header('Content-Disposition: attachment; filename=' . $nom_fichier);
         header('Expires: 0');
         header('Cache-Control: must-revalidate');
         header('Pragma: public');
-        header('Content-Length: ' . filesize($videoPath));
+        header('Content-Length: ' . filesize($chemin_fichier));
 
-        // Lecture du fichier et envoi du contenu
-        readfile($videoPath);
-        exit;*/
-        echo "download page";
+        // Lit le fichier et l'envoie au navigateur
+        readfile($chemin_fichier);
+        exit;
     }
 }
