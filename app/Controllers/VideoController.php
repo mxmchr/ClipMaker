@@ -1,6 +1,7 @@
 <?php
 
 namespace Clipmaker\Controllers;
+
 use Clipmaker\Models\VideoModel;
 use FFMpeg\FFMpeg;
 use FFMpeg\Coordinate\TimeCode;
@@ -13,72 +14,88 @@ class VideoController
     {
         $videoModel = new VideoModel();
         $video = $videoModel->getVideo($videoId);
-        $videoPath = ABSPATH . ltrim($video['file_path'], '/');
 
+        if (!$video) {
+            // Gérer l'erreur, par exemple :
+            echo "La vidéo n'a pas été trouvée.";
+            return;
+        }
+
+        $videoPath = ABSPATH . ltrim($video['file_path'], '/');
 
         require_once './app/Views/VideoView.php';
     }
+
     public function clip($videoId)
     {
-        //TO DO : récupérer $videoPath
-        $videoPath = ABSPATH . "depot/videos/test.mp4";
-        $clipStart = $_POST['clipStart'];
-        $clipStop = $_POST['clipStop'];
-        $frameTime = $_POST['frameTime'];
+        $videoModel = new VideoModel();
+        $videoPath = $videoModel->getVideoPathById($videoId);
+
+        if (!$videoPath) {
+            echo "Le chemin de la vidéo n'a pas été trouvé.";
+            return;
+        }
+
+        $videoPath = ABSPATH . ltrim($videoPath['file_path'], '/');
+        $clipStart = (float)($_POST['clipStart'] ?? 0);
+        $clipStop = (float)($_POST['clipStop'] ?? 0);
+        $frameTime = (float)($_POST['frameTime'] ?? 0);
+        $clipName = $_POST['clipName'] ?? '';
+        $captureName = $_POST['captureName'] ?? '';
         $clipTime = $clipStop - $clipStart;
+
+        // Créer une instance FFMpeg
         $ffmpeg = FFMpeg::create();
+
+        // Ouvrir la vidéo avec FFMpeg
         $video = $ffmpeg->open($videoPath);
-        $duration = $ffmpeg->getFFProbe()
-            ->format($videoPath)
-            ->get('duration');
 
-        // Vérifie si la variable $frameTime n'est pas vide
-        if (!empty($frameTime) && ($frameTime != 0)) {
-            // Crée une image à partir d'une frame à la position $frameTime du fichier vidéo
-            $video
-                ->frame(TimeCode::fromSeconds($frameTime))
-                ->save(ABSPATH . 'depot/screenshots/frame.jpg');
-
-            $frame = true;  // Indique que le screenshot (frame) a été réalisé
-        } else {
-            $frame = false;  // Indique que le screenshot (frame) n'a pas été réalisé
-        }
-
-        // Vérifie si la variable $clipStop n'est pas vide
-        if (!empty($clipStop) && $clipStop != 0) {
-            // Crée un clip vidéo à partir d'une plage de temps définie par $clipStart et $clipTime
-            $video
-                ->clip(TimeCode::fromSeconds($clipStart), TimeCode::fromSeconds($clipTime))
-                ->save(new X264(), ABSPATH . 'depot/clips/video.mp4');
-            $clip = true;  // Indique que le clip a été réalisé
-        } else {
-            $clip = false;  // Indique que le clip n'a pas été réalisé
-        }
-
-        if (!$frame && !$clip) {
-            $msg = "Veuiller choisir une action en remplissant le champ fin du clip, ou capture";
-        }
-
-        if ($clip) {
-            // Insérer les informations du clip dans la table "clips"
-            $clipFilePath = '/depot/clips/video.mp4'; // Chemin du clip vidéo
-            $clipTitle = 'Nom du clip'; // Remplacez par le titre approprié
-
-            // Utilisation du modèle pour insérer les informations du clip
-            $videoModel = new VideoModel();
-
-            try {
-                $videoModel->insertClip((int)$videoId, $clipFilePath, $clipTitle);
-            } catch (PDOException $e) {
-                // Gérer l'exception PDO ici
-                echo "Erreur PDO : " . $e->getMessage();
-                // Vous pouvez également enregistrer l'erreur dans un fichier de journal ou effectuer d'autres actions nécessaires.
+        try {
+            // Vérifier si la variable $frameTime n'est pas vide
+            if (!empty($frameTime) && $frameTime != 0) {
+                // Créer une image à partir d'une frame à la position $frameTime du fichier vidéo
+                $video->frame(TimeCode::fromSeconds($frameTime))->save(ABSPATH . 'depot/screenshots/' . $captureName . '.jpg');
+                $frame = true;  // Indiquer que le screenshot (frame) a été réalisé
+            } else {
+                $frame = false;  // Indiquer que le screenshot (frame) n'a pas été réalisé
             }
-        }
 
-        // Redirection vers la page /video/index/{id}
-        // si $clip || $frame == true ajouter lien dans la vue pour rediriger vers le clip ou la frame ()
-        header("Location: /video/index/$videoId");
+            // Vérifier si la variable $clipStop n'est pas vide
+            if (!empty($clipStop) && $clipStop != 0) {
+                // Créer un clip vidéo à partir d'une plage de temps définie par $clipStart et $clipTime
+                $video->clip(TimeCode::fromSeconds($clipStart), TimeCode::fromSeconds($clipTime))->save(new X264(), ABSPATH . 'depot/clips/' . $clipName . '.mp4');
+                $clip = true;  // Indiquer que le clip a été réalisé
+            } else {
+                $clip = false;  // Indiquer que le clip n'a pas été réalisé
+            }
+
+            // Gérer les erreurs et les messages
+            if (!$frame && !$clip) {
+                $msg = "Veuillez choisir une action en remplissant le champ fin du clip ou capture.";
+            }
+
+            if ($clip) {
+                // Insérer les informations du clip dans la table "clips"
+                $clipFilePath = '/depot/clips/video.mp4'; // Chemin du clip vidéo
+                $clipTitle = $clipName ?: 'Titre par défaut'; // Utiliser le titre fourni ou un titre par défaut
+
+                // Utiliser le modèle pour insérer les informations du clip
+                $videoModel = new VideoModel();
+
+                try {
+                    $videoModel->insertClip((int)$videoId, $clipFilePath, $clipTitle);
+                } catch (PDOException $e) {
+                    // Gérer l'exception PDO ici
+                    echo "Erreur PDO : " . $e->getMessage();
+                }
+            }
+
+            // Rediriger vers la page /video/index/{id}
+            // Ajouter un lien dans la vue pour rediriger vers le clip ou la frame s'ils sont réalisés
+            header("Location: /video/index/$videoId");
+
+        } catch (\Exception $e) {
+            echo 'Erreur FFMpeg : ' . $e->getMessage();
+        }
     }
 }
-

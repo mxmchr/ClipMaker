@@ -136,6 +136,43 @@ body::-ms-scrollbar-track {
     flex-direction: row;
 }
 
+.clip__header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
+.clip__header .view-button {
+    position: relative;
+    width: 30px; /* Ajustez la largeur du bouton selon vos préférences pour le rendre carré */
+    height: 30px; /* Ajustez la hauteur du bouton selon vos préférences pour le rendre carré */
+    background-color: #3498db;
+    color: #fff;
+    border: 1px solid #826fd5;
+    border-radius: 5px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.clip__header .view-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 15px 0 0 15px; /* Ajustez la taille de la flèche selon vos préférences */
+    border-color: transparent transparent transparent #fff; /* Ajustez la couleur de la flèche */
+}
+
+.clip__header .view-button:hover {
+    background-color: #2684c4;
+}
+
+
 .list__itemClips {
     display: flex;
     flex-direction: column;
@@ -143,7 +180,7 @@ body::-ms-scrollbar-track {
     align-items: center;
     text-align: center;
     background-color: #8c66c2;
-    margin: 10px;
+    margin: 30px;
     padding: 0 15px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -179,9 +216,11 @@ body::-ms-scrollbar-track {
 .list__clips {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: flex-start;
     padding: 0 10px;
+    align-content: space-around;
+    flex-direction: row;
 }
 
 .form__upload {

@@ -21,19 +21,22 @@ class ClipsView
                     $clipsModel = new ClipsModel();
                     $formattedDate = $clipsModel->formatCreatedAt($clip->created_at);
 
-                    echo '<li class="list__itemClips">
-                                <h2 class="title__clips"><a href="">' . $clip->title . '</a></h2>
-                                <video width="400" height="225" controls>
-                                    <source src="' . $clip->file_path . '" type="video/mp4">
-                                </video>
-                                <div class="list__footer">
-                                    <h3 class="title__date">' . $formattedDate . '</h3>
-                                <form action="/clips/download" method="post">
-                                    <button class="download-button" type="submit" name="download">Télécharger</button>
-                                </form>
-                                </div>
-                                
-                            </li>';
+                    echo '<li class="list__itemClips">';
+                        echo'<header class="clip__header">';
+                            echo '<h2 class="title__clips"><a href="">' . $clip->title . '</a></h2>';
+                            echo '<button class="view-button" onclick="window.location.href=\'/video/index/' . $clip->video_id . '\'" title="Voir la vidéo original"></button>';
+                        echo'</header>';
+                        echo '<video width="400" height="225" controls>';
+                            echo '<source src="' . $clip->file_path . '" type="video/mp4">';
+                        echo '</video>';
+                        echo '<div class="list__footer">';
+                            echo '<h3 class="title__date">' . $formattedDate . '</h3>';
+                            echo '<form action="/clips/download" method="post">';
+                                echo '<button class="download-button" type="submit" name="download">Télécharger</button>';
+                            echo '</form>';
+                        echo '</div>';
+                    echo '</li>';
+
                 }
             echo "</ul>";
         echo "</article>";

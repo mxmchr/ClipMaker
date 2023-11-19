@@ -18,6 +18,18 @@ class VideoModel
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function getVideoPathById($videoId)
+    {
+        $db = new Config();
+        $conn = $db->connect();
+
+        $query = "SELECT file_path FROM videos WHERE id = :videoId";
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(':videoId', $videoId, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
     public function insertClip($videoId, $file_path, $title)
     {
         $db = new Config();
