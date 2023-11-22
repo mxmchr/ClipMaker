@@ -69,14 +69,23 @@ class VideoController
                 $clip = false;  // Indiquer que le clip n'a pas été réalisé
             }
 
-            // Gérer les erreurs et les messages
-            if (!$frame && !$clip) {
+            $msg = 'Test';  // Initialiser le message
+            //définir le message à afficher lors du retour
+            if (!$clipStop && $clipStart) {
+                $msg = "Veuiller entrer une valeur pour la fin du clip";
+            } elseif (!$frame && !$clip) {
                 $msg = "Veuillez choisir une action en remplissant le champ fin du clip ou capture.";
+            } elseif ($frame && !$clip) {
+                $msg = "La capture a été réalisée avec succès.";
+            } elseif (!$frame && $clip) {
+                $msg = "Le clip a été réalisé avec succès.";
+            } elseif ($frame && $clip) {
+                $msg = "La capture et le clip ont été réalisés avec succès.";
             }
 
             if ($clip) {
                 // Insérer les informations du clip dans la table "clips"
-                $clipFilePath = '/depot/clips/video.mp4'; // Chemin du clip vidéo
+                $clipFilePath = '/depot/clips/' . $clipName . '.mp4';
                 $clipTitle = $clipName ?: 'Titre par défaut'; // Utiliser le titre fourni ou un titre par défaut
 
                 // Utiliser le modèle pour insérer les informations du clip
@@ -91,8 +100,13 @@ class VideoController
             }
 
             // Rediriger vers la page /video/index/{id}
-            // Ajouter un lien dans la vue pour rediriger vers le clip ou la frame s'ils sont réalisés
-            header("Location: /video/index/$videoId");
+            $redirectUrl = "/video/index/$videoId?clipMessage=" . urlencode($msg);
+            echo '<form id="intermediateForm" action="' . $redirectUrl . '" method="post">
+              <input type="hidden" name="videoId" value="' . $videoId . '">
+                  </form>';
+            echo '<script>
+              document.getElementById("intermediateForm").submit();
+                  </script>';
 
         } catch (\Exception $e) {
             echo 'Erreur FFMpeg : ' . $e->getMessage();

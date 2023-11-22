@@ -26,7 +26,7 @@ class ClipsView
                             echo '<h2 class="title__clips"><a href="">' . $clip->title . '</a></h2>';
                             echo '<button class="view-button" onclick="window.location.href=\'/video/index/' . $clip->video_id . '\'" title="Voir la vidéo original"></button>';
                         echo'</header>';
-                        echo '<video width="400" height="225" controls>';
+                        echo '<video width="400" height="225" controls class="clipView__clip">';
                             echo '<source src="' . $clip->file_path . '" type="video/mp4">';
                         echo '</video>';
                         echo '<div class="list__footer">';
