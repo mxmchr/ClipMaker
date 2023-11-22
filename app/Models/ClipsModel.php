@@ -4,7 +4,7 @@ namespace Clipmaker\Models;
 
 use Clipmaker\Config;
 use PDO;
-//require_once './app/Config.php';
+use PDOException;
 
 class ClipsModel {
     private $db;

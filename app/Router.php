@@ -25,7 +25,7 @@ if (file_exists($controller_file)) {
     if (method_exists($controller_instance, $action)) {
         // Appeler la méthode/action du contrôleur avec les paramètres
         $controller_instance->$action($param);
-    } else {
+    }  else {
         // Gérer l'action non trouvée (par exemple, afficher une erreur 404)
         require_once './app/templates/404.php';
     }

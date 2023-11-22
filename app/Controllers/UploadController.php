@@ -9,11 +9,13 @@ class UploadController
 {
     public function index()
     {
+        // Afficher la vue d'upload
         include './app/Views/UploadView.php';
     }
 
     public function handleUpload()
     {
+        // Gérer l'upload de la vidéo lors de la soumission du formulaire
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($_FILES['video']) && $_FILES['video']['error'] === UPLOAD_ERR_OK) {
                 $uploadDir = './depot/videos/';
@@ -45,7 +47,7 @@ class UploadController
                     // Ajout de la vidéo convertie à la base de données
                     $generatedName = $uploadModel->addVideoToDatabase($videoTitle, $convertedFile, $videoDescription);
 
-                    // Redirection vers la page de la vidéo convertie
+                    // Redirection vers la page de progression avec le nom généré
                     header("Location: /video/index/$generatedName");
                     exit;
                 } catch (\Exception $e) {

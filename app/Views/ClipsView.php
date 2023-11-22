@@ -36,7 +36,6 @@ class ClipsView
                             echo '</form>';
                         echo '</div>';
                     echo '</li>';
-
                 }
             echo "</ul>";
         echo "</article>";
