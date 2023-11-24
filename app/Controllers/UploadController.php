@@ -1,21 +1,28 @@
 <?php
 
 namespace Clipmaker\Controllers;
+
 use Clipmaker\Models\UploadModel;
 use FFMpeg\FFMpeg;
 use FFMpeg\Format\Video\X264;
 
 class UploadController
 {
+    /**
+     * Affiche la vue d'upload.
+     */
     public function index()
     {
-        // Afficher la vue d'upload
+        // Inclut la vue d'upload
         include './app/Views/UploadView.php';
     }
 
+    /**
+     * Gère l'upload de la vidéo lors de la soumission du formulaire.
+     */
     public function handleUpload()
     {
-        // Gérer l'upload de la vidéo lors de la soumission du formulaire
+        // Vérifie si la requête est de type POST et si un fichier a été correctement uploadé
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($_FILES['video']) && $_FILES['video']['error'] === UPLOAD_ERR_OK) {
                 $uploadDir = './depot/videos/';

@@ -2,6 +2,7 @@
 namespace Clipmaker;
 
 use PDO;
+
 class Config {
     private $host = "localhost";
     private $dbname = "Clipmaker";
@@ -10,6 +11,11 @@ class Config {
     private $charset = "utf8mb4";
     private $conn;
 
+    /**
+     * Établit une connexion à la base de données.
+     *
+     * @return PDO|false Objet PDO représentant la connexion ou false en cas d'échec.
+     */
     public function connect() {
         $dsn = "mysql:host={$this->host};dbname={$this->dbname};charset={$this->charset}";
 
@@ -22,4 +28,3 @@ class Config {
         }
     }
 }
-

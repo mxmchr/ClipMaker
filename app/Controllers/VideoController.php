@@ -10,6 +10,11 @@ use PDOException;
 
 class VideoController
 {
+    /**
+     * Affiche la page vidéo avec l'ID spécifié.
+     *
+     * @param int $videoId L'ID de la vidéo.
+     */
     public function index($videoId)
     {
         $videoModel = new VideoModel();
@@ -26,6 +31,11 @@ class VideoController
         require_once './app/Views/VideoView.php';
     }
 
+    /**
+     * Crée un clip vidéo et/ou une capture d'écran à partir de la vidéo spécifiée.
+     *
+     * @param int $videoId L'ID de la vidéo.
+     */
     public function clip($videoId)
     {
         $videoModel = new VideoModel();
@@ -70,9 +80,9 @@ class VideoController
             }
 
             $msg = 'Test';  // Initialiser le message
-            //définir le message à afficher lors du retour
+            // Définir le message à afficher lors du retour
             if (!$clipStop && $clipStart) {
-                $msg = "Veuiller entrer une valeur pour la fin du clip";
+                $msg = "Veuillez entrer une valeur pour la fin du clip";
             } elseif (!$frame && !$clip) {
                 $msg = "Veuillez choisir une action en remplissant le champ fin du clip ou capture.";
             } elseif ($frame && !$clip) {
@@ -102,11 +112,11 @@ class VideoController
             // Rediriger vers la page /video/index/{id}
             $redirectUrl = "/video/index/$videoId?clipMessage=" . urlencode($msg);
             echo '<form id="intermediateForm" action="' . $redirectUrl . '" method="post">
-              <input type="hidden" name="videoId" value="' . $videoId . '">
-                  </form>';
+                  <input type="hidden" name="videoId" value="' . $videoId . '">
+              </form>';
             echo '<script>
-              document.getElementById("intermediateForm").submit();
-                  </script>';
+                  document.getElementById("intermediateForm").submit();
+              </script>';
 
         } catch (\Exception $e) {
             echo 'Erreur FFMpeg : ' . $e->getMessage();

@@ -14,7 +14,11 @@ class ClipsModel {
         $this->db = new Config();
     }
 
-    // Méthode pour récupérer tous les clips
+    /**
+     * Récupère tous les clips depuis la base de données.
+     *
+     * @return array Tableau d'objets représentant les clips.
+     */
     public function getAllClips() {
         try {
             // Établir la connexion à la base de données
@@ -38,6 +42,12 @@ class ClipsModel {
         }
     }
 
+    /**
+     * Formate la date de création au format "d M Y".
+     *
+     * @param string $createdAt La date de création à formater.
+     * @return string La date formatée.
+     */
     public function formatCreatedAt($createdAt)
     {
         // Convertir la date au format strtotime pour pouvoir la formater
@@ -49,4 +59,3 @@ class ClipsModel {
         return $formattedDate;
     }
 }
-
