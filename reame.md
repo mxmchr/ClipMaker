@@ -9,6 +9,16 @@
    ```bash
    composer install
    ```
+3. Créer la base de données
+	```bash
+	mysql -u root -proot -e "CREATE DATABASE IF NOT EXISTS clipmaker;"
+	```
+3. Créer la base de données
+	```bash
+	mysql -u root -p root clipmaker < import.sql
+	```	
+	
+
 
 ##Configuration
 	Modifiez les paramètres de connexion à la base de données dans le fichier Config.php si nécessaire.
