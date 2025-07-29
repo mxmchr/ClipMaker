@@ -7,8 +7,8 @@ ClipMaker est une application web développée en PHP qui permet de créer facil
 
 1. Cloner le répertoire :
    ```bash
-   git clone https://github.com/mxmchr/PHP_Project_2.git
-   cd PHP_Project_2
+   git clone https://github.com/mxmchr/ClipMaker.git
+   cd ClipMaker
    ```
 2. Installer les dépendances avec Composer
    ```bash
