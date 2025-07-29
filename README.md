@@ -1,4 +1,8 @@
-# PHP_Project_2
+# ClipMaker
+
+ClipMaker est une application web développée en PHP qui permet de créer facilement des clips vidéo à partir de fichiers existants. Grâce à une interface simple, vous pouvez réaliser, télécharger et visionner vos clips et captures vidéo en toute simplicité. Cet outil s’appuie sur FFMpeg pour le traitement vidéo et utilise une base de données MySQL pour gérer les clips créés.
+
+
 ## Installation
 
 1. Cloner le répertoire :
