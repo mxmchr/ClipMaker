@@ -33,9 +33,9 @@ Accédez à l'application depuis le navigateur.
 Créez des clips et des captures en utilisant les fonctionnalités disponibles.
 
 ## Prérequis
-PHP 7.0 ou version ultérieure
-Composer
-FFMpeg installé sur le système
+* PHP 7.0 ou version ultérieure
+* Composer
+* FFMpeg installé sur le système
 
 ## Structure du Répertoire
 app: Contient le code de l'application.
