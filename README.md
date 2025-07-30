@@ -39,17 +39,17 @@ Créez des clips et des captures en utilisant les fonctionnalités disponibles.
 
 ## Structure du Répertoire
 
-projet/
-├── app/
-│   └── (code de l'application)
-├── public/
-│   └── (fichiers publics accessibles depuis le navigateur)
-├── vendor/
-│   └── (dépendances installées par Composer)
-├── db-scripts/
-│   └── (scripts SQL pour la base de données)
-└── depot/
-    └── (fichiers vidéo, clips, et captures stockés)
+	projet/
+	├── app/
+	│   └── (code de l'application)
+	├── public/
+	│   └── (fichiers publics accessibles depuis le navigateur)
+	├── vendor/
+	│   └── (dépendances installées par Composer)
+	├── db-scripts/
+	│   └── (scripts SQL pour la base de données)
+	└── depot/
+	    └── (fichiers vidéo, clips, et captures stockés)
 
 Description des dossiers
 
