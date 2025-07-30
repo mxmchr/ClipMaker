@@ -25,19 +25,19 @@ ClipMaker est une application web développée en PHP qui permet de créer facil
 	
 
 
-##Configuration
+## Configuration
 	Modifiez les paramètres de connexion à la base de données dans le fichier Config.php si nécessaire.
 
-##Utilisation
+## Utilisation
 	Accédez à l'application depuis le navigateur.
 	Créez des clips et des captures en utilisant les fonctionnalités disponibles.
 
-##Prérequis
+## Prérequis
 	PHP 7.0 ou version ultérieure
 	Composer
 	FFMpeg installé sur le système
 
-##Structure du Répertoire
+## Structure du Répertoire
 	app: Contient le code de l'application.
 	public: Contient les fichiers publics accessibles depuis le navigateur.
 	vendor: Contient les dépendances installées par Composer.
