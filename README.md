@@ -38,11 +38,27 @@ Créez des clips et des captures en utilisant les fonctionnalités disponibles.
 * FFMpeg installé sur le système
 
 ## Structure du Répertoire
-app: Contient le code de l'application.
-public: Contient les fichiers publics accessibles depuis le navigateur.
-vendor: Contient les dépendances installées par Composer.
-db-scripts: Contient les scripts SQL pour la base de données.
-depot: les fichiers video, clips, et captures y seront stoqués.
+
+projet/
+├── app/
+│   └── (code de l'application)
+├── public/
+│   └── (fichiers publics accessibles depuis le navigateur)
+├── vendor/
+│   └── (dépendances installées par Composer)
+├── db-scripts/
+│   └── (scripts SQL pour la base de données)
+└── depot/
+    └── (fichiers vidéo, clips, et captures stockés)
+
+Description des dossiers
+
+* app/ : Contient le code de l'application
+* public/ : Contient les fichiers publics accessibles depuis le navigateur
+* vendor/ : Contient les dépendances installées par Composer
+* db-scripts/ : Contient les scripts SQL pour la base de données
+* depot/ : Les fichiers vidéo, clips, et captures y seront stockés
+
 
 
 Auteur
